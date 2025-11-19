@@ -1,17 +1,32 @@
 # SuperLeagueChampionClient
 
-Εφαρμογή Java που συνδέεται με ένα PHP REST service (`getSLChampion.php`) και λαμβάνει δεδομένα για τους πρωταθλητές της Super League σε μορφή JSON.
+This is a small Java project that gets a list of sports champions from a server and prints it in a readable way. 
+The program asks for the server's IP address, fetches the data in JSON format, parses it, and displays the list of teams with their championship years and logos. 
+It also shows the author's name who provided the data.
 
-# Εκτέλεση
-1. Τρέξε το PHP αρχείο `getSLChampion.php` σε κάποιον web server
-2. Εκτέλεσε την Java εφαρμογή
-3. Εισήγαγε την IP του server όταν ζητηθεί
-4. Δες τα αποτελέσματα στην κονσόλα
+# How it works
 
-# Δομή
+The project has a few main parts:
+
+- `Champion`: a class representing a single team with its name, year, and logo URL.
+- `ChampionList`: a class that stores all the champions and the author's name. It can print the full list.
+- `HttpHandler`: a class that handles HTTP GET requests to the server, retrieves the JSON, and converts it into `Champion` objects.
+- `Main`: the main program that asks the user for the server IP, uses the handler to get the data, and prints it.
+
+On the server side, a simple PHP script provides the data as JSON, including the author and each team with its championship year and logo URL.
+
+# How to run
+
+1. Compile all the Java files.
+2. Run the `Main` class.
+3. When prompted, enter the server IP (where the PHP script is running).
+4. The program will print the author's name and the list of champions with their details.
+
+# Structure
 src/
 ├── Main.java
 ├── Champion.java
-└── ChampionsList.java
+├── ChampionsList.java
+└──HttpHandler.java
 lib/
 └── unirest-java-1.4.9.jar
